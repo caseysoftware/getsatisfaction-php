@@ -27,36 +27,21 @@ function format_response($input) {
  * @internal The basic architecture for this was heavily influenced by Neuman Vong's Twilio PHP library.
  * @license  http://creativecommons.org/licenses/MIT/ MIT
  */
-abstract class Services_GetSatisfaction
+class Services_GetSatisfaction extends Services_GetSatisfaction_Resource
 {
     const USER_AGENT = 'getsatisfaction-php/0.0.1';
 
-    protected $_username;
-    protected $_password;
-    protected $_company;
-
-    protected $_base_url = 'https://api.getsatisfaction.com';
-    protected $_format = 'json';
-    /**
-     * Constructor.
-     *
-     * @param string    $username   The getsat email address
-     * @param string    $password   The getsat password
-     */
-    public function __construct($username, $password)
+    public function getProducts($company)
     {
-        //TODO: authenticate
+        return new Services_GetSatisfaction_Products($this->_username, $this->_password, $company);
     }
-
-    protected function _get($url)
+    
+    public function __call($name, $arguments)
     {
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-
-        $response = curl_exec( $ch );
-        curl_close ($ch);
-
-        return $response;
+        switch ($name) {
+            default:
+                throw new Services_GetSatisfaction_ResourceException();
+        }
     }
 }
 /*
