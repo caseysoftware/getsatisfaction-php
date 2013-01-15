@@ -32,4 +32,12 @@ abstract class Services_GetSatisfaction_Resource
 
         return $response;
     }
+
+    public function bind($params = array()) {
+        foreach($params as $param => $value) {
+            $this->$param = $value;
+        }
+
+        return $this;
+    }
 }
