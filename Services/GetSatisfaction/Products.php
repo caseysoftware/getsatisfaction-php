@@ -28,13 +28,14 @@ class Services_GetSatisfaction_Products
 
     public function getProduct($index = 0)
     {
-        $product = array();
+        $params = array();
 
         if (isset($this->_obj->data[$index])) {
-            $product = $this->_obj->data[$index];
+            $params = $this->_obj->data[$index];
         }
 
-        return new Services_GetSatisfaction_Product($product);
+        $product = new Services_GetSatisfaction_Product($this->_username, $this->_password);
+        return $product->bind($params);
     }
 
     /**
