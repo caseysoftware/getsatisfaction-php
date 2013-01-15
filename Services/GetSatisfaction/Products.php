@@ -6,17 +6,8 @@ class Services_GetSatisfaction_Products
     protected $_products_json = '';
     protected $_obj  = null;
 
-    /**
-     * Constructor.
-     *
-     * @param string    $username   The getsat email address
-     * @param string    $password   The getsat password
-     * @param string    $company    The company to start browsing from
-     */
-    public function __construct($username, $password, $company)
+    public function init($company)
     {
-        //TODO: authenticate?
-
         $this->_company = $company;
         $this->_loadProducts();
     }

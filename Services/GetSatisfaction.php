@@ -31,9 +31,11 @@ class Services_GetSatisfaction extends Services_GetSatisfaction_Resource
 {
     public function getProducts($company)
     {
-        return new Services_GetSatisfaction_Products($this->_username, $this->_password, $company);
+        $products = new Services_GetSatisfaction_Products($this->_username, $this->_password, $company);
+        $products->init($company);
+        return $products;
     }
-    
+
     public function __call($name, $arguments)
     {
         switch ($name) {
