@@ -1,5 +1,8 @@
 <?php
 
+/*
+ * @todo TODO: Should this be iterable so we can list them off individually?
+ */
 class Services_GetSatisfaction_Product extends Services_GetSatisfaction
 {
 
@@ -35,6 +38,17 @@ class Services_GetSatisfaction_Product extends Services_GetSatisfaction
     public function getProductCount()
     {
         return $this->_products_obj->total;
+    }
+
+    public function getProduct($index = 0)
+    {
+        $product = null;
+
+        if (isset($this->_products_obj->data[$index])) {
+            $product = $this->_products_obj->data[$index];
+        }
+
+        return $product;
     }
 }
 
