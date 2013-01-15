@@ -5,6 +5,7 @@ abstract class Services_GetSatisfaction_Resource
     protected $_username;
     protected $_password;
 
+    const USER_AGENT = 'getsatisfaction-php/0.0.1';
     protected $_base_url = 'https://api.getsatisfaction.com';
     protected $_format = 'json';
 
@@ -24,6 +25,7 @@ abstract class Services_GetSatisfaction_Resource
     {
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_USERAGENT, self::USER_AGENT);
 
         $response = curl_exec( $ch );
         curl_close ($ch);

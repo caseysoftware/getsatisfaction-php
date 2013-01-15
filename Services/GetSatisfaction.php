@@ -29,8 +29,6 @@ function format_response($input) {
  */
 class Services_GetSatisfaction extends Services_GetSatisfaction_Resource
 {
-    const USER_AGENT = 'getsatisfaction-php/0.0.1';
-
     public function getProducts($company)
     {
         return new Services_GetSatisfaction_Products($this->_username, $this->_password, $company);
