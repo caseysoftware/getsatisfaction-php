@@ -6,11 +6,9 @@ class Services_GetSatisfaction_Products
 
     public function init($company)
     {
-        $this->_company = $company;
-        $product_url = $this->_base_url . '/companies/' . $this->_company .
-                '/products.' . $this->_format;
+        $url = $this->_base_url . '/companies/' . $company . '/products.' . $this->_format;
 
-        $this->_loadItems($product_url);
+        $this->_loadItems($url);
     }
 
     public function getProductCount()   {   return $this->getCount();   }
@@ -23,8 +21,8 @@ class Services_GetSatisfaction_Products
             $params = $this->_obj->data[$index];
         }
 
-        $product = new Services_GetSatisfaction_Product($this->_username, $this->_password);
-        return $product->bind($params);
+        $item = new Services_GetSatisfaction_Product($this->_username, $this->_password);
+        return $item->bind($params);
     }
 
     /**

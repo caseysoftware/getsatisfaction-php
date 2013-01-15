@@ -3,13 +3,12 @@
 class Services_GetSatisfaction_Topics
     extends Services_GetSatisfaction_ResourceList
 {
+
     public function init($product)
     {
-        $this->_product = $product;
-        $topic_url = $this->_base_url . '/products/' . $this->_product .
-                '/topics.' . $this->_format;
+        $url = $this->_base_url . '/products/' . $product . '/topics.' . $this->_format;
 
-        $this->_loadItems($topic_url);
+        $this->_loadItems($url);
     }
 
     public function getTopicCount() {   return $this->getCount();   }
@@ -22,8 +21,8 @@ class Services_GetSatisfaction_Topics
             $params = $this->_obj->data[$index];
         }
 
-        $topic = new Services_GetSatisfaction_Topic($this->_username, $this->_password);
-        return $topic->bind($params);
+        $item = new Services_GetSatisfaction_Topic($this->_username, $this->_password);
+        return $item->bind($params);
     }
 
     /**
