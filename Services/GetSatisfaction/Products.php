@@ -3,28 +3,17 @@
 class Services_GetSatisfaction_Products
     extends Services_GetSatisfaction_ResourceList
 {
-    protected $_products_json = '';
-    protected $_obj  = null;
 
     public function init($company)
     {
         $this->_company = $company;
-        $this->_loadProducts();
-    }
-
-    protected function _loadProducts()
-    {
         $product_url = $this->_base_url . '/companies/' . $this->_company .
                 '/products.' . $this->_format;
 
-        $this->_products_json = $this->_get($product_url);
-        $this->_obj  = json_decode($this->_products_json);
+        $this->_loadItems($product_url);
     }
 
-    public function getProductCount()
-    {
-        return $this->_obj->total;
-    }
+    public function getProductCount()   {   return $this->getCount();   }
 
     public function getProduct($index = 0)
     {

@@ -6,16 +6,10 @@ class Services_GetSatisfaction_Topics
     public function init($product)
     {
         $this->_product = $product;
-        $this->_loadTopics();
-    }
-
-    protected function _loadTopics()
-    {
         $topic_url = $this->_base_url . '/products/' . $this->_product .
                 '/topics.' . $this->_format;
 
-        $this->_json = $this->_get($topic_url);
-        $this->_obj  = json_decode($this->_json);
+        $this->_loadItems($topic_url);
     }
 
     public function getTopicCount() {   return $this->getCount();   }
