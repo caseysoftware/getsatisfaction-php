@@ -1,6 +1,6 @@
 <?php
 
-function Services_GetSatisfcation_autoload($className) {
+function Services_GetSatisfaction_autoload($className) {
     if (substr($className, 0, 24) != 'Services_GetSatisfaction') {
         return false;
     }
@@ -31,10 +31,12 @@ abstract class Services_GetSatisfaction
 {
     const USER_AGENT = 'getsatisfaction-php/0.0.1';
 
-    protected $username;
-    protected $password;
-    protected $company;
+    protected $_username;
+    protected $_password;
+    protected $_company;
 
+    protected $_base_url = 'https://api.getsatisfaction.com';
+    protected $_format = 'json';
     /**
      * Constructor.
      *
@@ -44,6 +46,17 @@ abstract class Services_GetSatisfaction
     public function __construct($username, $password)
     {
         //TODO: authenticate
+    }
+
+    protected function _get($url)
+    {
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+
+        $response = curl_exec( $ch );
+        curl_close ($ch);
+
+        return $response;
     }
 }
 /*
