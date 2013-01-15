@@ -11,8 +11,6 @@ class Services_GetSatisfaction_Products
         $this->_loadItems($url);
     }
 
-    public function getProductCount()   {   return $this->getCount();   }
-
     public function getProduct($index = 0)
     {
         $params = array();

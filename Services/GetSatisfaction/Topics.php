@@ -11,8 +11,6 @@ class Services_GetSatisfaction_Topics
         $this->_loadItems($url);
     }
 
-    public function getTopicCount() {   return $this->getCount();   }
-
     public function getTopic($index = 0)
     {
         $params = array();
