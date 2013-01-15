@@ -27,7 +27,7 @@ function format_response($input) {
  * @internal The basic architecture for this was heavily influenced by Neuman Vong's Twilio PHP library.
  * @license  http://creativecommons.org/licenses/MIT/ MIT
  */
-class Services_GetSatisfaction
+abstract class Services_GetSatisfaction
 {
     const USER_AGENT = 'getsatisfaction-php/0.0.1';
 
@@ -40,9 +40,8 @@ class Services_GetSatisfaction
      *
      * @param string    $username   The getsat email address
      * @param string    $password   The getsat password
-     * @param string    $company    The company to begin browsing from        
      */
-    public function __construct($username, $password, $company)
+    public function __construct($username, $password)
     {
         //TODO: authenticate
     }
