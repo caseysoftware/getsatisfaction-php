@@ -22,11 +22,12 @@ abstract class Services_GetSatisfaction_ResourceList
         $this->_obj  = json_decode($this->_json);
         $this->count = count($this->_obj->data);
         $this->total = $this->_obj->total;
+        $this->pages = 1 + floor($this->_obj->total/$this->_limit);
 
-        $this->_obj->first_page = $url . '0';
-        $this->_obj->prev_page  = $url . max(0, $this->_page-1);
-        $this->_obj->next_page  = $url . min($this->_page+1, (int) $this->_obj->total/$this->_limit);
-        $this->_obj->last_page  = $url . floor($this->_obj->total/$this->_limit);
+        $this->first_page = $url . '0';
+        $this->prev_page  = $url . max(0, $this->_page-1);
+        $this->next_page  = $url . min($this->_page+1, (int) $this->total/$this->_limit);
+        $this->last_page  = $url . ($this->pages - 1);
     }
 
     public function setPage($page = 0, $limit = 30)
