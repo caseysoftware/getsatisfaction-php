@@ -7,15 +7,32 @@ abstract class Services_GetSatisfaction_ResourceList
     protected $_json = '';
     protected $_obj  = null;
     protected $_index = 0;
+    protected $_page  = 0;
+    protected $_limit = 30;
 
     public $count = 0;
 
     protected function _loadItems($url)
     {
-        $this->_json = $this->_get($url);
+        $url .= (false === strpos($url, '?')) ? '?' : '&';
+        $url .= 'limit=' . $this->_limit . '&page=';
+        $currentUrl = $url . $this->_page;
+
+        $this->_json = $this->_get($currentUrl);
         $this->_obj  = json_decode($this->_json);
-        $this->_obj->count = count($this->_obj->data);
-        $this->_obj->total = $this->_obj->total;
+        $this->count = count($this->_obj->data);
+        $this->total = $this->_obj->total;
+
+        $this->_obj->first_page = $url . '0';
+        $this->_obj->prev_page  = $url . max(0, $this->_page-1);
+        $this->_obj->next_page  = $url . min($this->_page+1, (int) $this->_obj->total/$this->_limit);
+        $this->_obj->last_page  = $url . floor($this->_obj->total/$this->_limit);
+    }
+
+    public function setPage($page = 0, $limit = 30)
+    {
+        $this->_page  = (int) $page;
+        $this->_limit = (int) $limit;
     }
 
     public function rewind()
