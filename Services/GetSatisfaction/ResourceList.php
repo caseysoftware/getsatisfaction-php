@@ -14,7 +14,8 @@ abstract class Services_GetSatisfaction_ResourceList
     {
         $this->_json = $this->_get($url);
         $this->_obj  = json_decode($this->_json);
-        $this->count = $this->_obj->total;
+        $this->_obj->count = count($this->_obj->data);
+        $this->_obj->total = $this->_obj->total;
     }
 
     public function rewind()
