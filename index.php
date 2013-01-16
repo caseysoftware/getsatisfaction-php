@@ -1,25 +1,7 @@
-getsatisfaction-php
-===================
-
-This is a PHP helper for the Get Satisfaction API.
-
-It is modeled after the Twilio PHP Helper library because I think it's generally well done and thought through.
-
-### Download the source code
-
-[Click here to download the source
-(.zip)](https://github.com/caseysoftware/getsatisfaction-php/zipball/master) which includes all
-dependencies.
-
-Once you download the library, move the Services folder to your project
-directory and then include the library file:
-
-    require 'Services/GetSatisfaction.php';
-
-```php
 <?php
 // First we load the library
 require 'Services/GetSatisfaction.php';
+
 // Then we use our Get Satisfaction credentials to authenticate
 $gs_username = 'username';
 $gs_password = 'password';
@@ -27,7 +9,7 @@ $gs_password = 'password';
 $client = new Services_GetSatisfaction($gs_username, $gs_password);
 
 // Then we specify a company that we want to get products for
-$company = 'companyname';
+$company = 'openvbx';
 $products = $client->getProducts($company);
 
 echo "There are {$products->count} products here: \n\n";
@@ -47,4 +29,3 @@ foreach ($products as $product) {
         }
     }
 }
-```
