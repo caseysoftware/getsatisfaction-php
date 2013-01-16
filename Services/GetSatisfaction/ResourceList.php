@@ -11,6 +11,8 @@ abstract class Services_GetSatisfaction_ResourceList
     protected $_limit = 30;
 
     public $count = 0;
+    public $total = 0;
+    public $pages = 0;
 
     protected function _loadItems($url)
     {
@@ -24,6 +26,7 @@ abstract class Services_GetSatisfaction_ResourceList
         $this->total = $this->_obj->total;
         $this->pages = 1 + floor($this->_obj->total/$this->_limit);
 
+        $this->this_page  = $currentUrl;
         $this->first_page = $url . '0';
         $this->prev_page  = $url . max(0, $this->_page-1);
         $this->next_page  = $url . min($this->_page+1, (int) $this->total/$this->_limit);
