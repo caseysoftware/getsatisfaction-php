@@ -33,7 +33,7 @@ abstract class Services_GetSatisfaction_ResourceList
     public function setPage($page = 0, $limit = 30)
     {
         $this->_page  = (int) $page;
-        $this->_limit = (int) $limit;
+        $this->_limit = ($limit > 30) ? 30 : (int) $limit;
     }
 
     public function rewind()
