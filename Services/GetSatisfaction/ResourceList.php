@@ -29,7 +29,7 @@ abstract class Services_GetSatisfaction_ResourceList
         $this->this_page  = $currentUrl;
         $this->first_page = $url . '0';
         $this->prev_page  = $url . max(0, $this->_page-1);
-        $this->next_page  = $url . min($this->_page+1, (int) $this->total/$this->_limit);
+        $this->next_page  = $url . (int) min($this->_page+1, $this->total/$this->_limit);
         $this->last_page  = $url . ($this->pages - 1);
     }
 
