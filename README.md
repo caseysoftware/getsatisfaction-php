@@ -1,9 +1,11 @@
-getsatisfaction-php
+Get Satisfaction PHP Library
 ===================
 
-This is a PHP helper for the Get Satisfaction API.
+This is a PHP helper for the Get Satisfaction API - https://getsatisfaction.com/corp/help/api-resources/
 
-It is modeled after the Twilio PHP Helper library because I think it's generally well done and thought through.
+It is modeled after the Twilio PHP Helper library because I think it's generally well done and thought through. This isn't official but should generally work except for the incomplete items in the TODO list below.
+
+It is released under the MIT license.
 
 ### Download the source code
 
@@ -49,10 +51,17 @@ foreach ($products as $product) {
 }
 ```
 
+### TODO
+
+*  Refactor the getObject & get* methods on the classes that extend Services_GetSatisfaction_ResourceList to eliminate the duplication
+*  Implement searching and filtering for Topics, Replies, Companies, People, Products, Tags
+*  Implement GET for Replies, Comments, Companies, People
+*  Implement authorization for POST & PUT methods for Topics, Tags, Replies
+*  Implement error handling across the board
 
 ### MIT License
 
-Copyright (C) 2013, Keith Casey <keith at caseysoftware dot com>
+Copyright (C) 2013, Keith Casey <contrib at caseysoftware dot com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in

@@ -21,7 +21,6 @@ function format_response($input) {
 /**
  * Get Satisfaction API client interface.
  *
- * @category Services
  * @package  Services_GetSatisfaction
  * @author   Keith Casey <contrib@caseysoftware.com>
  * @internal The basic architecture for this was heavily influenced by Neuman Vong's Twilio PHP library.
